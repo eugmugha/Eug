@@ -1,9 +1,9 @@
 import os
 
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.security import OAuth2PasswordBearer
 from fastapi.staticfiles import StaticFiles
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 
 from backend.auth import (
     create_access_token,
@@ -12,7 +12,7 @@ from backend.auth import (
     verify_password,
 )
 from backend.database import Base, SessionLocal, engine, get_db
-from backend.models import User
+from backend.models import BuyerProfile, SellerProfile, User
 from backend.schemas import (
     StatsResponse,
     UserLogin,
@@ -89,6 +89,22 @@ def register(data: UserRegister, db: Session = Depends(get_db)) -> User:
         address=data.address,
     )
     db.add(user)
+    db.flush()
+
+    if data.user_type == "seller":
+        profile = SellerProfile(
+            user_id=user.id,
+            category=data.category,
+            business_description=data.business_description,
+            city=data.city,
+        )
+    else:
+        profile = BuyerProfile(
+            user_id=user.id,
+            delivery_address=data.delivery_address or data.address,
+            city=data.city,
+        )
+    db.add(profile)
     db.commit()
     db.refresh(user)
     return user
@@ -123,6 +139,7 @@ def admin_users(admin: User = Depends(require_admin), db: Session = Depends(get_
     return (
         db.query(User)
         .filter(User.is_admin == False)
+        .options(joinedload(User.seller_profile), joinedload(User.buyer_profile))
         .order_by(User.created_at.desc())
         .all()
     )

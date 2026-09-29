@@ -1,7 +1,18 @@
 from datetime import datetime
-from typing import Literal
+from typing import Literal, Optional
 
 from pydantic import BaseModel, EmailStr
+
+
+class SellerProfileData(BaseModel):
+    category: Optional[str] = None
+    business_description: Optional[str] = None
+    city: Optional[str] = None
+
+
+class BuyerProfileData(BaseModel):
+    delivery_address: Optional[str] = None
+    city: Optional[str] = None
 
 
 class UserRegister(BaseModel):
@@ -12,6 +23,11 @@ class UserRegister(BaseModel):
     business_name: str
     user_type: Literal["seller", "buyer"]
     address: str
+    # Profile-specific (optional, depends on user_type)
+    category: Optional[str] = None
+    business_description: Optional[str] = None
+    delivery_address: Optional[str] = None
+    city: Optional[str] = None
 
 
 class UserLogin(BaseModel):
@@ -29,6 +45,8 @@ class UserResponse(BaseModel):
     address: str
     is_admin: bool
     created_at: datetime
+    seller_profile: Optional[SellerProfileData] = None
+    buyer_profile: Optional[BuyerProfileData] = None
 
     class Config:
         from_attributes = True

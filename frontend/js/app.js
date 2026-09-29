@@ -30,6 +30,16 @@ function showMsg(id, text, type) {
 // ---- Register ----
 const regForm = document.getElementById("register-form");
 if (regForm) {
+  const typeSelect = document.getElementById("user_type");
+  const sellerFields = document.getElementById("seller-fields");
+  const buyerFields = document.getElementById("buyer-fields");
+
+  typeSelect.addEventListener("change", () => {
+    const v = typeSelect.value;
+    sellerFields.style.display = v === "seller" ? "block" : "none";
+    buyerFields.style.display = v === "buyer" ? "block" : "none";
+  });
+
   regForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const fd = new FormData(regForm);
@@ -128,6 +138,18 @@ async function showAdminDashboard(token) {
           .slice(0, 2)
           .join("")
           .toUpperCase();
+        let profileHtml = "";
+        if (u.seller_profile) {
+          const sp = u.seller_profile;
+          profileHtml = `
+            ${sp.category ? `<div class="user-detail">🏷️ Catégorie : ${esc(sp.category)}</div>` : ""}
+            ${sp.business_description ? `<div class="user-detail">📝 ${esc(sp.business_description)}</div>` : ""}`;
+        } else if (u.buyer_profile) {
+          const bp = u.buyer_profile;
+          profileHtml = `
+            ${bp.delivery_address ? `<div class="user-detail">📦 Livraison : ${esc(bp.delivery_address)}</div>` : ""}`;
+        }
+        const profileCity = u.seller_profile?.city || u.buyer_profile?.city;
         return `
         <div class="user-card">
           <div class="user-avatar">${initials}</div>
@@ -136,7 +158,8 @@ async function showAdminDashboard(token) {
             <div class="user-detail">📧 ${esc(u.email)}</div>
             <div class="user-detail">📞 ${esc(u.phone)}</div>
             <div class="user-detail">🏪 ${esc(u.business_name)}</div>
-            <div class="user-detail">📍 ${esc(u.address)}</div>
+            <div class="user-detail">📍 ${esc(u.address)}${profileCity ? " — " + esc(profileCity) : ""}</div>
+            ${profileHtml}
             <div class="user-detail">Inscrit le ${date}</div>
             <span class="badge ${u.user_type}">${u.user_type === "seller" ? "Vendeur" : "Acheteur"}</span>
           </div>

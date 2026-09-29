@@ -40,11 +40,6 @@
       </div>
 
       <div class="field">
-        <label for="business_name">Nom du commerce</label>
-        <input type="text" id="business_name" name="business_name" required placeholder="Boutique Jean SARL">
-      </div>
-
-      <div class="field">
         <label for="user_type">Je suis</label>
         <select id="user_type" name="user_type" required>
           <option value="">— Choisir —</option>
@@ -54,8 +49,46 @@
       </div>
 
       <div class="field">
+        <label for="business_name">Nom du commerce</label>
+        <input type="text" id="business_name" name="business_name" required placeholder="Boutique Jean SARL">
+      </div>
+
+      <div class="field">
         <label for="address">Adresse</label>
         <input type="text" id="address" name="address" required placeholder="Lubumbashi, RDC">
+      </div>
+
+      <div class="field">
+        <label for="city">Ville</label>
+        <input type="text" id="city" name="city" placeholder="Lubumbashi">
+      </div>
+
+      <!-- Seller-specific fields -->
+      <div id="seller-fields" style="display:none">
+        <div class="field">
+          <label for="category">Catégorie de commerce</label>
+          <select id="category" name="category">
+            <option value="">— Choisir —</option>
+            <option value="Électronique">Électronique</option>
+            <option value="Mode & Vêtements">Mode & Vêtements</option>
+            <option value="Alimentation">Alimentation</option>
+            <option value="Maison & Jardin">Maison & Jardin</option>
+            <option value="Santé & Beauté">Santé & Beauté</option>
+            <option value="Autres">Autres</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="business_description">Description du commerce</label>
+          <textarea id="business_description" name="business_description" rows="3" placeholder="Décrivez votre commerce..."></textarea>
+        </div>
+      </div>
+
+      <!-- Buyer-specific fields -->
+      <div id="buyer-fields" style="display:none">
+        <div class="field">
+          <label for="delivery_address">Adresse de livraison</label>
+          <input type="text" id="delivery_address" name="delivery_address" placeholder="Adresse de livraison par défaut">
+        </div>
       </div>
 
       <button type="submit" class="btn-primary">S'inscrire</button>
