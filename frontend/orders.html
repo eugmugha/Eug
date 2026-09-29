@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#0d9488">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <title>Mes commandes — MarketPlace</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <a href="/" class="logo">🛒 MarketPlace</a>
+    <nav class="nav-links">
+      <a href="/marketplace.html" class="nav-link">Boutique</a>
+      <a href="/cart.html" class="nav-link">🛒 <span id="cart-badge" class="cart-badge">0</span></a>
+      <a href="/orders.html" class="nav-link active">Commandes</a>
+      <button id="logout-btn" class="btn-ghost">Déconnexion</button>
+    </nav>
+  </header>
+
+  <main class="container wide">
+    <h1 class="page-title">Mes Commandes</h1>
+    <div id="orders-list">
+      <p class="loading">Chargement…</p>
+    </div>
+  </main>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

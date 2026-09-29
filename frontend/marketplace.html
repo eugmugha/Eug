@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#0d9488">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <title>Boutique — MarketPlace</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <a href="/" class="logo">🛒 MarketPlace</a>
+    <nav class="nav-links">
+      <a href="/marketplace.html" class="nav-link active">Boutique</a>
+      <a href="/cart.html" class="nav-link">🛒 <span id="cart-badge" class="cart-badge">0</span></a>
+      <a href="/orders.html" class="nav-link">Commandes</a>
+      <button id="logout-btn" class="btn-ghost">Déconnexion</button>
+    </nav>
+  </header>
+
+  <main class="container wide">
+    <h1 class="page-title">Boutique</h1>
+
+    <!-- Seller: add product form -->
+    <div id="seller-panel" style="display:none">
+      <details class="add-product-toggle">
+        <summary>➕ Ajouter un produit</summary>
+        <form id="product-form" class="form-card">
+          <div class="field">
+            <label for="p-name">Nom du produit</label>
+            <input type="text" id="p-name" name="name" required placeholder="Ex: Smartphone Galaxy">
+          </div>
+          <div class="field">
+            <label for="p-emoji">Emoji (icône)</label>
+            <input type="text" id="p-emoji" name="image_emoji" maxlength="2" placeholder="📱">
+          </div>
+          <div class="field">
+            <label for="p-price">Prix (FC)</label>
+            <input type="number" id="p-price" name="price" required min="0" step="100" placeholder="15000">
+          </div>
+          <div class="field">
+            <label for="p-stock">Stock</label>
+            <input type="number" id="p-stock" name="stock" required min="0" value="1">
+          </div>
+          <div class="field">
+            <label for="p-category">Catégorie</label>
+            <select id="p-category" name="category">
+              <option value="">— Choisir —</option>
+              <option value="Électronique">Électronique</option>
+              <option value="Mode & Vêtements">Mode & Vêtements</option>
+              <option value="Alimentation">Alimentation</option>
+              <option value="Maison & Jardin">Maison & Jardin</option>
+              <option value="Santé & Beauté">Santé & Beauté</option>
+              <option value="Autres">Autres</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="p-desc">Description</label>
+            <textarea id="p-desc" name="description" rows="2" placeholder="Décrivez le produit..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Publier le produit</button>
+          <p id="product-msg" class="form-msg"></p>
+        </form>
+      </details>
+    </div>
+
+    <div id="products-grid" class="products-grid">
+      <p class="loading">Chargement des produits…</p>
+    </div>
+  </main>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
