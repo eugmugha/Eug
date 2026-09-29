@@ -1,0 +1,1 @@
+{"name": "MarketPlace — Vendeurs & Acheteurs", "short_name": "MarketPlace", "description": "Plateforme de connexion entre vendeurs et acheteurs", "start_url": "/", "display": "standalone", "background_color": "#f0fdfa", "theme_color": "#0d9488", "icons": [{"src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}]}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#0d9488">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <title>Connexion — MarketPlace</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <a href="/" class="back-link">← Retour</a>
+    <div class="logo">🛒 MarketPlace</div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Se connecter</h1>
+
+    <form id="login-form" class="form-card" novalidate>
+      <div class="field">
+        <label for="email">Adresse email</label>
+        <input type="email" id="email" name="email" required placeholder="jean@email.com">
+      </div>
+
+      <div class="field">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="password" required placeholder="Votre mot de passe">
+      </div>
+
+      <button type="submit" class="btn-primary">Connexion</button>
+      <p id="form-msg" class="form-msg"></p>
+    </form>
+
+    <p class="form-link">Pas encore inscrit ? <a href="/register.html">Créer un compte</a></p>
+  </main>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

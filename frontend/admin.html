@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#0d9488">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <title>Admin — MarketPlace</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="logo">📊 Espace Admin</div>
+    <button id="logout-btn" class="btn-ghost" style="display:none">Déconnexion</button>
+  </header>
+
+  <!-- Login screen -->
+  <main class="container" id="admin-login-view">
+    <h1 class="page-title">Connexion Administrateur</h1>
+    <form id="admin-login-form" class="form-card" novalidate>
+      <div class="field">
+        <label for="admin_email">Email admin</label>
+        <input type="email" id="admin_email" name="email" required placeholder="admin@marketplace.com">
+      </div>
+      <div class="field">
+        <label for="admin_password">Mot de passe</label>
+        <input type="password" id="admin_password" name="password" required placeholder="••••••••">
+      </div>
+      <button type="submit" class="btn-primary">Se connecter</button>
+      <p id="admin-msg" class="form-msg"></p>
+    </form>
+    <p class="form-hint">Compte par défaut : admin@marketplace.com / admin123</p>
+  </main>
+
+  <!-- Dashboard -->
+  <main class="container" id="admin-dashboard" style="display:none">
+    <h1 class="page-title">Tableau de bord</h1>
+
+    <section class="stats-grid">
+      <div class="stat-card total">
+        <span class="stat-number" id="stat-total">—</span>
+        <span class="stat-label">Utilisateurs</span>
+      </div>
+      <div class="stat-card sellers">
+        <span class="stat-number" id="stat-sellers">—</span>
+        <span class="stat-label">Vendeurs</span>
+      </div>
+      <div class="stat-card buyers">
+        <span class="stat-number" id="stat-buyers">—</span>
+        <span class="stat-label">Acheteurs</span>
+      </div>
+    </section>
+
+    <section class="users-section">
+      <h2 class="section-title">Fiches d'enregistrement</h2>
+      <div id="users-list" class="users-list">
+        <p class="loading">Chargement…</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

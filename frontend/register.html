@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#0d9488">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <title>Inscription — MarketPlace</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <a href="/" class="back-link">← Retour</a>
+    <div class="logo">🛒 MarketPlace</div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Créer un compte</h1>
+
+    <form id="register-form" class="form-card" novalidate>
+      <div class="field">
+        <label for="full_name">Nom complet</label>
+        <input type="text" id="full_name" name="full_name" required placeholder="Jean Mukendi">
+      </div>
+
+      <div class="field">
+        <label for="email">Adresse email</label>
+        <input type="email" id="email" name="email" required placeholder="jean@email.com">
+      </div>
+
+      <div class="field">
+        <label for="phone">Téléphone</label>
+        <input type="tel" id="phone" name="phone" required placeholder="+243 8xx xxx xxx">
+      </div>
+
+      <div class="field">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="password" required minlength="6" placeholder="Minimum 6 caractères">
+      </div>
+
+      <div class="field">
+        <label for="business_name">Nom du commerce</label>
+        <input type="text" id="business_name" name="business_name" required placeholder="Boutique Jean SARL">
+      </div>
+
+      <div class="field">
+        <label for="user_type">Je suis</label>
+        <select id="user_type" name="user_type" required>
+          <option value="">— Choisir —</option>
+          <option value="seller">Vendeur</option>
+          <option value="buyer">Acheteur</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="address">Adresse</label>
+        <input type="text" id="address" name="address" required placeholder="Lubumbashi, RDC">
+      </div>
+
+      <button type="submit" class="btn-primary">S'inscrire</button>
+      <p id="form-msg" class="form-msg"></p>
+    </form>
+
+    <p class="form-link">Déjà inscrit ? <a href="/login.html">Se connecter</a></p>
+  </main>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
